@@ -1,5 +1,6 @@
 package _01_Calculator;
 
+import java.text.DecimalFormat;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -11,13 +12,13 @@ public class _02_CgpaCalculator {
 		int number_of_sem=sc.nextInt();
 		float totcgpa=0;int totgd=0;
 		float cgpa;
-		for(int k=0;k<number_of_sem;k++) {
+		DecimalFormat df = new DecimalFormat("#.###");
+		for(int k=1;k<=number_of_sem;k++) {
 			int countab=0,countra=0;
 			
-			System.out.println("Enter the number of Subjects in the Semester:");
+			System.out.println("Enter the number of Subjects in the Semester "+k+":");
 			int number_of_subject=sc.nextInt();
-			float tot=0f;
-			float totsgpa=0.0f;
+			float tot=0f,totsgpa=0.0f;
 			Map<String,Integer> map=new LinkedHashMap<String,Integer>();
 			System.out.println("Enter the Subject Names with grade :");
 			String str[]=new String[number_of_subject];
@@ -26,7 +27,6 @@ public class _02_CgpaCalculator {
 				str[i]=sc.next();
 				key[i]=sc.nextInt();
 				map.put(str[i],key[i]);
-				
 			}
 			int ar1[]=new int[str.length];
 			for(int i=0;i<map.size();i++) {
@@ -43,12 +43,12 @@ public class _02_CgpaCalculator {
 					String grade_ob=sc.next();
 					for(int i=0;i<grade_on.length;i++) {
 								if(grade_ob.equals(grade_on[6])) {
-									ab=ab.concat(str[j])+"\n";
+									ab=ab.concat(str[j])+"--";
 									countab++;
 									break;
 								}
 								if(grade_ob.equals(grade_on[7])) {
-									ra=ra.concat(str[j])+"\n";
+									ra=ra.concat(str[j])+"--";
 									countra++;
 									break;
 								}
@@ -59,19 +59,18 @@ public class _02_CgpaCalculator {
 								}
 					}
 			}
-			System.out.println(tot);
-			System.out.println(gd);
-			System.out.println("Number of subject ABSENT\n"+ab+" "+countab);
-			System.out.println("Number of subject to be REAPPEAR "+ra+" "+countra);
+			System.out.println("Total mark for the Semester "+k+" is:"+tot);
+			System.out.println("Total grade for the Semester "+k+" is:"+gd);
+			System.out.println("Number of subject ABSENT "+ab+" "+countab);
+			System.out.println("Number of subject to be REAPPEAR"+ra+" "+countra);
 			totcgpa+=tot;
 			totgd+=gd;
 			totsgpa=tot/gd;
-			System.out.println(totsgpa);
-			tot=0;gd=0;
+			System.out.println("SGPA for semester "+k+" is "+df.format(totsgpa));
 		}
-		System.out.println("total:"+totcgpa);
-		System.out.println("total grade"+totgd);
+		System.out.println("Total Marks obtained for "+number_of_sem+" semester is "+totcgpa);
+		System.out.println("Total grade obtained for "+number_of_sem+" semester is "+totgd);
 		cgpa=totcgpa/totgd;
-		System.out.println(cgpa);
+		System.out.println("CGPA for "+number_of_sem+" semester is "+df.format(cgpa));
 	}
 }
