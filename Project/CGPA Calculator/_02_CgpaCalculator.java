@@ -13,14 +13,19 @@ public class _02_CgpaCalculator {
 		float totcgpa=0;int totgd=0;
 		float cgpa;
 		DecimalFormat df = new DecimalFormat("#.###");
-		for(int k=1;k<=number_of_sem;k++) {
+		for(int k=1;k<=number_of_sem;k++){
 			int countab=0,countra=0;
 			
 			System.out.println("Enter the number of Subjects in the Semester "+k+":");
 			int number_of_subject=sc.nextInt();
 			float tot=0f,totsgpa=0.0f;
 			Map<String,Integer> map=new LinkedHashMap<String,Integer>();
-			System.out.println("Enter the Subject Names with grade :\n(Note:The grades are entered as below format) \nGrades->S,A,B,C,D,E,AB,RA-F\nS->Credit points-10\nA->Credit points-9\nB->Credit points-8\nC->Credit points-7\nD->Credit points-6\nE->Credit points-5\nAB->Absent\nRA-F->Reappear");
+			System.out.println("Enter the Subject Names with grade :\n"
+					+ "(Note:The grades are entered as below format) \n"
+					+ "Grades->S,A,B,C,D,E,AB,RA-F\nS->Credit points-10\n"
+					+ "A->Credit points-9\nB->Credit points-8\nC->Credit points-7\n"
+					+ "D->Credit points-6\nE->Credit points-5\n"
+					+ "AB->Absent\nRA-F->Reappear");
 			String str[]=new String[number_of_subject];
 			int key[]=new int[number_of_subject];
 			for(int i=0;i<number_of_subject;i++){
