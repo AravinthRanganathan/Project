@@ -1,5 +1,6 @@
 package _01_Calculator;
 
+import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -14,13 +15,14 @@ public class _01_SgpaCalculator {
 	}
 }
 class sgpa{
+	Scanner sc=new Scanner(System.in);
+	DecimalFormat df = new DecimalFormat("#.###");
 	public void calculate() {
 		int countab=0,countra=0;
-		Scanner sc=new Scanner(System.in);
-		System.out.println("Enter the number of Subjects in the Semester:");
+		
+		System.out.println("Enter the number of Subjects in the Semester: ");
 		int number_of_subject=sc.nextInt();
-		float tot=0f;
-		float totsgpa=0.0f;
+		float tot=0f,totsgpa=0.0f;
 		Map<String,Integer> map=new LinkedHashMap<String,Integer>();
 		System.out.println("Enter the Subject Names with grade :");
 		String str[]=new String[number_of_subject];
@@ -29,7 +31,6 @@ class sgpa{
 			str[i]=sc.next();
 			key[i]=sc.nextInt();
 			map.put(str[i],key[i]);
-			
 		}
 		int ar1[]=new int[str.length];
 		for(int i=0;i<map.size();i++) {
@@ -46,12 +47,12 @@ class sgpa{
 				String grade_ob=sc.next();
 				for(int i=0;i<grade_on.length;i++) {
 							if(grade_ob.equals(grade_on[6])) {
-								ab=ab.concat(str[j])+"\n";
+								ab=ab.concat(str[j])+"--";
 								countab++;
 								break;
 							}
 							if(grade_ob.equals(grade_on[7])) {
-								ra=ra.concat(str[j])+"\n";
+								ra=ra.concat(str[j])+"--";
 								countra++;
 								break;
 							}
@@ -62,11 +63,11 @@ class sgpa{
 							}
 				}
 		}
-		System.out.println(tot);
-		System.out.println(gd);
-		System.out.println("Number of subject ABSENT\n"+ab+" "+countab);
-		System.out.println("Number of subject to be REAPPEAR "+ra+" "+countra);
+		System.out.println("Total mark for this Semester is:"+tot);
+		System.out.println("Total grade for this Semester is:"+gd);
+		System.out.println("Number of subject ABSENT "+ab+" "+countab);
+		System.out.println("Number of subject to be REAPPEAR"+ra+" "+countra);
 		totsgpa=tot/gd;
-		System.out.println(totsgpa);
+		System.out.println("SGPA is "+df.format(totsgpa));
 	}
 }
