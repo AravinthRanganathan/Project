@@ -24,11 +24,11 @@ class sgpa{
 		int number_of_subject=sc.nextInt();
 		float tot=0f,totsgpa=0.0f;
 		Map<String,Integer> map=new LinkedHashMap<String,Integer>();
-		System.out.println("Enter the Subject Names with grade :");
+		System.out.println("Enter the Subject Names with grade :\n(Note:The grades are entered as below format) \nGrades->S,A,B,C,D,E,AB,RA-F\nS->Grade 10\nA->Grade 9\nB->Grade 8\nC->Grade 7\nD->Grade 6\nE->Grade 5\nAB->Absent\nRA-F->Reappear");
 		String str[]=new String[number_of_subject];
 		int key[]=new int[number_of_subject];
 		for(int i=0;i<number_of_subject;i++){
-			str[i]=sc.next();
+			str[i]=sc.next().toUpperCase();
 			key[i]=sc.nextInt();
 			map.put(str[i],key[i]);
 		}
